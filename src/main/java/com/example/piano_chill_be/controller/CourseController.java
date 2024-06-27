@@ -2,25 +2,23 @@ package com.example.piano_chill_be.controller;
 
 
 import com.example.piano_chill_be.entity.Course;
-import com.example.piano_chill_be.model.CreateCourseRequestDTO;
-import com.example.piano_chill_be.model.UpdateCourseRequestDTO;
+import com.example.piano_chill_be.model.course.CreateCourseRequestDTO;
+import com.example.piano_chill_be.model.course.UpdateCourseRequestDTO;
 import com.example.piano_chill_be.service.CourseService;
-import jakarta.persistence.Entity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.print.Pageable;
 import java.util.List;
-import java.util.UUID;
 
 @RestController
-@RequestMapping(path = "/course")
+@RequestMapping(path = "/admin/course")
+@CrossOrigin(origins = "http://localhost:3000")
 public class CourseController {
 
     @Autowired
     CourseService courseService;
 
-    @PostMapping
+    @PostMapping("/create")
     public Course createCourse(@RequestBody CreateCourseRequestDTO createCourse) {
         return courseService.createCourse(createCourse);
     }
@@ -36,7 +34,7 @@ public class CourseController {
         return courseService.updateCourse(id, updateCourse);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("delete/{id}")
     public Course deleteCourse(@PathVariable("id") Long id) {
         return courseService.deleteCourse(id);
     }

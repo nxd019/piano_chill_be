@@ -1,4 +1,4 @@
-package com.example.piano_chill_be.model;
+package com.example.piano_chill_be.model.course;
 
 
 import lombok.Data;
